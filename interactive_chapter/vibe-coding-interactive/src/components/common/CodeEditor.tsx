@@ -5,6 +5,11 @@ import { vscDarkPlus, prism } from 'react-syntax-highlighter/dist/esm/styles/pri
 import { motion } from 'framer-motion';
 import { useTheme } from '../../styles/ThemeProvider';
 
+// Define type for themed props
+type ThemedProps = {
+  darkMode: boolean;
+};
+
 interface CodeEditorProps {
   initialCode: string;
   language: string;
@@ -18,27 +23,27 @@ interface CodeEditorProps {
   }>;
 }
 
-const EditorContainer = styled(motion.div)`
+const EditorContainer = styled(motion.div)<ThemedProps>`
   border-radius: var(--border-radius-md);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
   margin: 1.5rem 0;
-  border: 1px solid ${props => props.theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
+  border: 1px solid ${props => props.darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
 `;
 
-const EditorHeader = styled.div`
-  background-color: ${props => props.theme === 'dark' ? 'var(--color-dark-light)' : '#f5f5f5'};
+const EditorHeader = styled.div<ThemedProps>`
+  background-color: ${props => props.darkMode ? 'var(--color-dark-light)' : '#f5f5f5'};
   padding: 0.75rem 1rem;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid ${props => props.theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
+  border-bottom: 1px solid ${props => props.darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
 `;
 
-const EditorTitle = styled.div`
+const EditorTitle = styled.div<ThemedProps>`
   font-family: var(--font-code);
   font-size: 0.875rem;
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
   display: flex;
   align-items: center;
   gap: 0.5rem;
@@ -89,7 +94,7 @@ const ButtonsContainer = styled.div`
   gap: 0.5rem;
 `;
 
-const Button = styled.button<{ variant?: 'primary' | 'secondary' | 'ghost' }>`
+const Button = styled.button<{ variant?: 'primary' | 'secondary' | 'ghost', darkMode: boolean }>`
   border: none;
   background-color: ${props => {
     if (props.variant === 'primary') return 'var(--color-primary)';
@@ -99,7 +104,7 @@ const Button = styled.button<{ variant?: 'primary' | 'secondary' | 'ghost' }>`
   color: ${props => {
     if (props.variant === 'primary') return 'white';
     if (props.variant === 'secondary') return 'var(--color-primary)';
-    return props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)';
+    return props.darkMode ? 'var(--color-light)' : 'var(--color-dark)';
   }};
   border: ${props => props.variant === 'secondary' ? '1px solid var(--color-primary)' : 'none'};
   padding: 0.375rem 0.75rem;
@@ -112,7 +117,7 @@ const Button = styled.button<{ variant?: 'primary' | 'secondary' | 'ghost' }>`
     background-color: ${props => {
       if (props.variant === 'primary') return 'var(--color-primary-dark)';
       if (props.variant === 'secondary') return 'rgba(109, 40, 217, 0.1)';
-      return props.theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)';
+      return props.darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)';
     }};
   }
 `;
@@ -121,7 +126,7 @@ const CodeContainer = styled.div`
   position: relative;
 `;
 
-const EditorTextarea = styled.textarea`
+const EditorTextarea = styled.textarea<ThemedProps>`
   width: 100%;
   min-height: 200px;
   font-family: var(--font-code);
@@ -130,20 +135,20 @@ const EditorTextarea = styled.textarea`
   padding: 1rem;
   border: none;
   resize: vertical;
-  background-color: ${props => props.theme === 'dark' ? 'var(--color-dark)' : 'white'};
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+  background-color: ${props => props.darkMode ? 'var(--color-dark)' : 'white'};
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
   
   &:focus {
     outline: none;
   }
 `;
 
-const SuggestionPopup = styled(motion.div)`
+const SuggestionPopup = styled(motion.div)<ThemedProps>`
   position: absolute;
   bottom: 1rem;
   right: 1rem;
-  background-color: ${props => props.theme === 'dark' ? 'var(--color-dark-light)' : 'white'};
-  border: 1px solid ${props => props.theme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)'};
+  background-color: ${props => props.darkMode ? 'var(--color-dark-light)' : 'white'};
+  border: 1px solid ${props => props.darkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)'};
   border-radius: var(--border-radius-md);
   padding: 1rem;
   box-shadow: var(--shadow-lg);
@@ -156,21 +161,21 @@ const SuggestionTitle = styled.h4`
   color: var(--color-primary);
 `;
 
-const SuggestionText = styled.p`
+const SuggestionText = styled.p<ThemedProps>`
   font-size: 0.875rem;
   margin-bottom: 1rem;
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
 `;
 
-const SuggestionCode = styled.pre`
-  background-color: ${props => props.theme === 'dark' ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.05)'};
+const SuggestionCode = styled.pre<ThemedProps>`
+  background-color: ${props => props.darkMode ? 'rgba(0, 0, 0, 0.3)' : 'rgba(0, 0, 0, 0.05)'};
   padding: 0.5rem;
   border-radius: var(--border-radius-sm);
   font-family: var(--font-code);
   font-size: 0.75rem;
   margin-bottom: 0.5rem;
   overflow-x: auto;
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
 `;
 
 const CodeEditor: React.FC<CodeEditorProps> = ({
@@ -234,13 +239,13 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
 
   return (
     <EditorContainer
-      theme={darkMode ? 'dark' : 'light'}
+      darkMode={darkMode}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.3 }}
     >
-      <EditorHeader theme={darkMode ? 'dark' : 'light'}>
-        <EditorTitle theme={darkMode ? 'dark' : 'light'}>
+      <EditorHeader darkMode={darkMode}>
+        <EditorTitle darkMode={darkMode}>
           {title}
           <LanguageBadge language={language}>
             {language}
@@ -249,14 +254,14 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
         <ButtonsContainer>
           <Button 
             onClick={copyToClipboard}
-            theme={darkMode ? 'dark' : 'light'}
+            darkMode={darkMode}
           >
             Copy
           </Button>
           {editable && (
             <Button 
               onClick={resetCode}
-              theme={darkMode ? 'dark' : 'light'}
+              darkMode={darkMode}
             >
               Reset
             </Button>
@@ -269,7 +274,7 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
           <EditorTextarea
             value={code}
             onChange={handleCodeChange}
-            theme={darkMode ? 'dark' : 'light'}
+            darkMode={darkMode}
           />
         ) : (
           <SyntaxHighlighter
@@ -287,19 +292,19 @@ const CodeEditor: React.FC<CodeEditorProps> = ({
         
         {activeSuggestion && (
           <SuggestionPopup
-            theme={darkMode ? 'dark' : 'light'}
+            darkMode={darkMode}
             initial={{ opacity: 0, scale: 0.9 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.9 }}
           >
             <SuggestionTitle>AI Suggestion</SuggestionTitle>
-            <SuggestionText theme={darkMode ? 'dark' : 'light'}>
+            <SuggestionText darkMode={darkMode}>
               {activeSuggestion.explanation}
             </SuggestionText>
-            <SuggestionCode theme={darkMode ? 'dark' : 'light'}>
+            <SuggestionCode darkMode={darkMode}>
               {activeSuggestion.completion}
             </SuggestionCode>
-            <Button variant="primary" onClick={applySuggestion}>
+            <Button variant="primary" onClick={applySuggestion} darkMode={darkMode}>
               Apply Suggestion
             </Button>
           </SuggestionPopup>

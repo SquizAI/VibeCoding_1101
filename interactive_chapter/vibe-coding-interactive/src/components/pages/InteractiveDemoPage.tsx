@@ -1,16 +1,19 @@
-import React, { useState } from 'react';
+import React from 'react';
 import styled from 'styled-components';
-import { motion } from 'framer-motion';
 import { useTheme } from '../../styles/ThemeProvider';
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 import VideoTutorial from '../common/VideoTutorial';
 import AIWorkflowDemo from '../common/AIWorkflowDemo';
 
-const PageContainer = styled.div`
+type ThemedProps = {
+  darkMode: boolean;
+};
+
+const PageContainer = styled.div<ThemedProps>`
   min-height: 100vh;
-  background-color: ${props => props.theme === 'dark' ? 'var(--color-dark)' : 'var(--color-light)'};
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+  background-color: ${props => props.darkMode ? 'var(--color-dark)' : 'var(--color-light)'};
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
 `;
 
 const MainContent = styled.main`
@@ -19,7 +22,11 @@ const MainContent = styled.main`
   padding: 2rem;
 `;
 
-const SectionTitle = styled.h2`
+type SectionTitleProps = {
+  level: 'beginner' | 'advanced' | 'ninja';
+};
+
+const SectionTitle = styled.h2<SectionTitleProps>`
   font-size: 2rem;
   font-weight: 700;
   margin: 3rem 0 1.5rem;
@@ -768,7 +775,7 @@ const InteractiveDemoPage: React.FC = () => {
   const { darkMode, skillLevel } = useTheme();
   
   return (
-    <PageContainer theme={darkMode ? 'dark' : 'light'}>
+    <PageContainer darkMode={darkMode}>
       <Header />
       
       <MainContent>

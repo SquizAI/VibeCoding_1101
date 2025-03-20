@@ -4,13 +4,18 @@ import { motion } from 'framer-motion';
 import { useInView } from 'react-intersection-observer';
 import { Link } from 'react-router-dom';
 import { useTheme } from '../../styles/ThemeProvider';
+
+// Define type for themed props
+type ThemedProps = {
+  darkMode: boolean;
+};
 import Header from '../common/Header';
 import Footer from '../common/Footer';
 
-const PageContainer = styled.div`
+const PageContainer = styled.div<ThemedProps>`
   min-height: 100vh;
-  background-color: ${props => props.theme === 'dark' ? 'var(--color-dark)' : 'var(--color-light)'};
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+  background-color: ${props => props.darkMode ? 'var(--color-dark)' : 'var(--color-light)'};
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
 `;
 
 const MainContent = styled.main`
@@ -29,7 +34,7 @@ const HeroSection = styled.section`
   margin-bottom: 4rem;
 `;
 
-const HeroTitle = styled(motion.h1)`
+const HeroTitle = styled(motion.h1)<{ level?: 'beginner' | 'advanced' | 'ninja' }>`
   font-size: clamp(2.5rem, 5vw, 4rem);
   font-weight: 800;
   margin-bottom: 1.5rem;
@@ -126,8 +131,8 @@ const FeaturesGrid = styled.div`
   margin-top: 3rem;
 `;
 
-const FeatureCard = styled(motion.div)`
-  background-color: ${props => props.theme === 'dark' ? 'var(--color-dark-light)' : 'var(--color-white)'};
+const FeatureCard = styled(motion.div)<ThemedProps>`
+  background-color: ${props => props.darkMode ? 'var(--color-dark-light)' : 'var(--color-white)'};
   border-radius: var(--border-radius-lg);
   padding: 2rem;
   box-shadow: var(--shadow-md);
@@ -173,11 +178,11 @@ const SkillLevelCards = styled.div`
   margin-top: 3rem;
 `;
 
-const SkillLevelCard = styled(motion.div)<{ level: string }>`
+const SkillLevelCard = styled(motion.div)<{ level: string, darkMode: boolean }>`
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-md);
-  background-color: ${props => props.theme === 'dark' ? 'var(--color-dark-light)' : 'var(--color-white)'};
+  background-color: ${props => props.darkMode ? 'var(--color-dark-light)' : 'var(--color-white)'};
   border-top: 5px solid ${props => {
     switch (props.level) {
       case 'beginner': return 'var(--color-beginner)';
@@ -194,10 +199,10 @@ const SkillLevelCard = styled(motion.div)<{ level: string }>`
   }
 `;
 
-const SkillLevelHeader = styled.div<{ level: string }>`
+const SkillLevelHeader = styled.div<{ level: string, darkMode: boolean }>`
   padding: 1.5rem;
   background-color: ${props => {
-    if (props.theme === 'dark') return 'rgba(0, 0, 0, 0.2)';
+    if (props.darkMode) return 'rgba(0, 0, 0, 0.2)';
     switch (props.level) {
       case 'beginner': return 'rgba(59, 130, 246, 0.05)';
       case 'advanced': return 'rgba(236, 72, 153, 0.05)';
@@ -240,10 +245,10 @@ const SkillLevelFeatureItem = styled.li`
   line-height: 1.5;
 `;
 
-const CTASection = styled.section`
+const CTASection = styled.section<ThemedProps>`
   text-align: center;
   padding: 4rem 2rem;
-  background-color: ${props => props.theme === 'dark' ? 'var(--color-dark-light)' : 'rgba(109, 40, 217, 0.05)'};
+  background-color: ${props => props.darkMode ? 'var(--color-dark-light)' : 'rgba(109, 40, 217, 0.05)'};
   border-radius: var(--border-radius-lg);
   margin-bottom: 4rem;
 `;
@@ -367,7 +372,7 @@ const HomePage: React.FC = () => {
   const [ctaRef, ctaInView] = useInView({ triggerOnce: true, threshold: 0.1 });
   
   return (
-    <PageContainer theme={darkMode ? 'dark' : 'light'}>
+    <PageContainer darkMode={darkMode}>
       <Header />
       
       <MainContent>
@@ -421,7 +426,7 @@ const HomePage: React.FC = () => {
             {features.map((feature, index) => (
               <FeatureCard
                 key={index}
-                theme={darkMode ? 'dark' : 'light'}
+                darkMode={darkMode}
                 variants={fadeIn}
               >
                 <FeatureIcon level={skillLevel}>{feature.icon}</FeatureIcon>
@@ -451,11 +456,11 @@ const HomePage: React.FC = () => {
               <SkillLevelCard
                 key={index}
                 level={level.level}
-                theme={darkMode ? 'dark' : 'light'}
+                darkMode={darkMode}
                 variants={fadeIn}
                 onClick={() => setSkillLevel(level.level as 'beginner' | 'advanced' | 'ninja')}
               >
-                <SkillLevelHeader level={level.level} theme={darkMode ? 'dark' : 'light'}>
+                <SkillLevelHeader level={level.level} darkMode={darkMode}>
                   <SkillLevelTitle level={level.level}>{level.title}</SkillLevelTitle>
                 </SkillLevelHeader>
                 
@@ -484,7 +489,7 @@ const HomePage: React.FC = () => {
           </SkillLevelCards>
         </SkillLevelsSection>
         
-        <CTASection theme={darkMode ? 'dark' : 'light'} ref={ctaRef}>
+        <CTASection darkMode={darkMode} ref={ctaRef}>
           <CTATitle
             initial={{ opacity: 0, y: 20 }}
             animate={ctaInView ? { opacity: 1, y: 0 } : {}}

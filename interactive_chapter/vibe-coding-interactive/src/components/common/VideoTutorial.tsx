@@ -3,6 +3,11 @@ import styled from 'styled-components';
 import { motion } from 'framer-motion';
 import { useTheme } from '../../styles/ThemeProvider';
 
+// Define type for themed props
+type ThemedProps = {
+  darkMode: boolean;
+};
+
 interface VideoTutorialProps {
   videoId: string;
   title: string;
@@ -11,11 +16,11 @@ interface VideoTutorialProps {
   timestamp?: Record<string, number>;
 }
 
-const VideoContainer = styled(motion.div)`
+const VideoContainer = styled(motion.div)<ThemedProps>`
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  background-color: ${props => props.theme === 'dark' ? 'var(--color-dark-light)' : 'var(--color-white)'};
+  background-color: ${props => props.darkMode ? 'var(--color-dark-light)' : 'var(--color-white)'};
   margin-bottom: 2rem;
 `;
 
@@ -53,8 +58,8 @@ const VideoTitle = styled.h3<{ category?: string }>`
   }};
 `;
 
-const VideoDescription = styled.p`
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+const VideoDescription = styled.p<ThemedProps>`
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
   margin-bottom: 1rem;
 `;
 
@@ -151,7 +156,7 @@ const VideoTutorial: React.FC<VideoTutorialProps> = ({
 
   return (
     <VideoContainer
-      theme={darkMode ? 'dark' : 'light'}
+      darkMode={darkMode}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
@@ -167,7 +172,7 @@ const VideoTutorial: React.FC<VideoTutorialProps> = ({
       <VideoInfo>
         {category && <CategoryBadge category={category}>{category}</CategoryBadge>}
         <VideoTitle category={category}>{title}</VideoTitle>
-        <VideoDescription theme={darkMode ? 'dark' : 'light'}>{description}</VideoDescription>
+        <VideoDescription darkMode={darkMode}>{description}</VideoDescription>
         
         {Object.keys(timestamp).length > 0 && (
           <>

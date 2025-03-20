@@ -4,6 +4,11 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useTheme } from '../../styles/ThemeProvider';
 import CodeEditor from './CodeEditor';
 
+// Define a type for styled-components props with darkMode
+type ThemedProps = {
+  darkMode: boolean;
+};
+
 interface Step {
   id: number;
   title: string;
@@ -21,17 +26,17 @@ interface WorkflowProps {
   steps: Step[];
 }
 
-const DemoContainer = styled(motion.div)`
+const DemoContainer = styled(motion.div)<ThemedProps>`
   margin: 2rem 0;
   border-radius: var(--border-radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  background-color: ${props => props.theme === 'dark' ? 'var(--color-dark-light)' : 'var(--color-white)'};
+  background-color: ${props => props.darkMode ? 'var(--color-dark-light)' : 'var(--color-white)'};
 `;
 
-const DemoHeader = styled.div`
+const DemoHeader = styled.div<ThemedProps>`
   padding: 1.5rem;
-  border-bottom: 1px solid ${props => props.theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
+  border-bottom: 1px solid ${props => props.darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
 `;
 
 const DemoTitle = styled.h2<{ tool: string }>`
@@ -70,12 +75,12 @@ const ToolIcon = styled.span<{ tool: string }>`
   font-size: 1rem;
 `;
 
-const DemoDescription = styled.p`
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+const DemoDescription = styled.p<ThemedProps>`
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
   margin-bottom: 1.5rem;
 `;
 
-const StepsContainer = styled.div`
+const StepsContainer = styled.div<ThemedProps>`
   display: flex;
   margin-top: 1rem;
   overflow-x: auto;
@@ -86,17 +91,17 @@ const StepsContainer = styled.div`
   }
   
   &::-webkit-scrollbar-track {
-    background: ${props => props.theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'};
+    background: ${props => props.darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.05)'};
     border-radius: var(--border-radius-full);
   }
   
   &::-webkit-scrollbar-thumb {
-    background-color: ${props => props.theme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'};
+    background-color: ${props => props.darkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.2)'};
     border-radius: var(--border-radius-full);
   }
 `;
 
-const StepButton = styled(motion.button)<{ active: boolean; tool: string }>`
+const StepButton = styled(motion.button)<{ active: boolean; tool: string; darkMode: boolean }>`
   padding: 0.5rem 1rem;
   background-color: ${props => props.active ? 
     (props.tool === 'bolt' ? '#FFC107' : 
@@ -104,7 +109,7 @@ const StepButton = styled(motion.button)<{ active: boolean; tool: string }>`
      '#805AD5') : 'transparent'};
   color: ${props => props.active ? 
     (props.tool === 'bolt' ? 'black' : 'white') : 
-    props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+    props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
   border: 1px solid ${props => 
     props.tool === 'bolt' ? '#FFC107' : 
     props.tool === 'cursor' ? '#0CA5E9' : 
@@ -124,14 +129,14 @@ const StepButton = styled(motion.button)<{ active: boolean; tool: string }>`
   }
 `;
 
-const StepNumber = styled.span`
+const StepNumber = styled.span<ThemedProps>`
   display: inline-flex;
   align-items: center;
   justify-content: center;
   width: 20px;
   height: 20px;
   margin-right: 0.5rem;
-  background-color: ${props => props.theme === 'dark' ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)'};
+  background-color: ${props => props.darkMode ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.1)'};
   border-radius: var(--border-radius-full);
   font-size: 0.75rem;
 `;
@@ -140,46 +145,46 @@ const DemoContent = styled.div`
   padding: 1.5rem;
 `;
 
-const StepTitle = styled.h3`
+const StepTitle = styled.h3<ThemedProps>`
   font-size: 1.25rem;
   margin-bottom: 0.75rem;
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
 `;
 
-const StepDescription = styled.p`
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+const StepDescription = styled.p<ThemedProps>`
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
   margin-bottom: 1.5rem;
 `;
 
-const ChatContainer = styled.div`
+const ChatContainer = styled.div<ThemedProps>`
   margin-bottom: 1.5rem;
   border-radius: var(--border-radius-md);
   overflow: hidden;
-  border: 1px solid ${props => props.theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
+  border: 1px solid ${props => props.darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
 `;
 
-const UserMessage = styled.div`
+const UserMessage = styled.div<ThemedProps>`
   padding: 1rem;
-  background-color: ${props => props.theme === 'dark' ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)'};
-  border-bottom: 1px solid ${props => props.theme === 'dark' ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
+  background-color: ${props => props.darkMode ? 'rgba(255, 255, 255, 0.05)' : 'rgba(0, 0, 0, 0.03)'};
+  border-bottom: 1px solid ${props => props.darkMode ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)'};
 `;
 
-const UserLabel = styled.div`
+const UserLabel = styled.div<ThemedProps>`
   font-weight: 600;
   margin-bottom: 0.5rem;
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
 `;
 
-const UserText = styled.div`
+const UserText = styled.div<ThemedProps>`
   font-family: var(--font-code);
   font-size: 0.875rem;
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
   white-space: pre-wrap;
 `;
 
-const AIMessage = styled.div`
+const AIMessage = styled.div<ThemedProps>`
   padding: 1rem;
-  background-color: ${props => props.theme === 'dark' ? 'rgba(128, 90, 213, 0.1)' : 'rgba(128, 90, 213, 0.05)'};
+  background-color: ${props => props.darkMode ? 'rgba(128, 90, 213, 0.1)' : 'rgba(128, 90, 213, 0.05)'};
 `;
 
 const AILabel = styled.div<{ tool: string }>`
@@ -195,9 +200,9 @@ const AILabel = styled.div<{ tool: string }>`
   }};
 `;
 
-const AIText = styled.div`
+const AIText = styled.div<ThemedProps>`
   font-size: 0.875rem;
-  color: ${props => props.theme === 'dark' ? 'var(--color-light)' : 'var(--color-dark)'};
+  color: ${props => props.darkMode ? 'var(--color-light)' : 'var(--color-dark)'};
   white-space: pre-wrap;
 `;
 
@@ -287,30 +292,30 @@ const AIWorkflowDemo: React.FC<WorkflowProps> = ({
   
   return (
     <DemoContainer
-      theme={darkMode ? 'dark' : 'light'}
+      darkMode={darkMode}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5 }}
     >
-      <DemoHeader>
+      <DemoHeader darkMode={darkMode}>
         <DemoTitle tool={tool}>
           <ToolIcon tool={tool}>{getToolIcon()}</ToolIcon>
           {title}
         </DemoTitle>
-        <DemoDescription theme={darkMode ? 'dark' : 'light'}>{description}</DemoDescription>
+        <DemoDescription darkMode={darkMode}>{description}</DemoDescription>
         
-        <StepsContainer theme={darkMode ? 'dark' : 'light'}>
+        <StepsContainer darkMode={darkMode}>
           {steps.map((step, index) => (
             <StepButton
               key={step.id}
               active={activeStep === index}
               tool={tool}
-              theme={darkMode ? 'dark' : 'light'}
+              darkMode={darkMode}
               onClick={() => setActiveStep(index)}
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
-              <StepNumber theme={darkMode ? 'dark' : 'light'}>{index + 1}</StepNumber>
+              <StepNumber darkMode={darkMode}>{index + 1}</StepNumber>
               {step.title}
             </StepButton>
           ))}
@@ -326,22 +331,22 @@ const AIWorkflowDemo: React.FC<WorkflowProps> = ({
           exit={{ opacity: 0, y: -10 }}
           transition={{ duration: 0.3 }}
         >
-          <StepTitle theme={darkMode ? 'dark' : 'light'}>
+          <StepTitle darkMode={darkMode}>
             Step {activeStep + 1}: {currentStep.title}
           </StepTitle>
-          <StepDescription theme={darkMode ? 'dark' : 'light'}>
+          <StepDescription darkMode={darkMode}>
             {currentStep.description}
           </StepDescription>
           
           {currentStep.userInput && currentStep.aiResponse && (
-            <ChatContainer theme={darkMode ? 'dark' : 'light'}>
-              <UserMessage theme={darkMode ? 'dark' : 'light'}>
-                <UserLabel theme={darkMode ? 'dark' : 'light'}>User:</UserLabel>
-                <UserText theme={darkMode ? 'dark' : 'light'}>{currentStep.userInput}</UserText>
+            <ChatContainer darkMode={darkMode}>
+              <UserMessage darkMode={darkMode}>
+                <UserLabel darkMode={darkMode}>User:</UserLabel>
+                <UserText darkMode={darkMode}>{currentStep.userInput}</UserText>
               </UserMessage>
-              <AIMessage theme={darkMode ? 'dark' : 'light'}>
+              <AIMessage darkMode={darkMode}>
                 <AILabel tool={tool}>{getToolName()}:</AILabel>
-                <AIText theme={darkMode ? 'dark' : 'light'}>{currentStep.aiResponse}</AIText>
+                <AIText darkMode={darkMode}>{currentStep.aiResponse}</AIText>
               </AIMessage>
             </ChatContainer>
           )}
