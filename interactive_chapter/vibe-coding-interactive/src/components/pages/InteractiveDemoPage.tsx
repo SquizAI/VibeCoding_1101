@@ -17,9 +17,18 @@ const PageContainer = styled.div<ThemedProps>`
 `;
 
 const MainContent = styled.main`
+  width: 100%;
+  max-width: 100%;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+`;
+
+const ContentContainer = styled.div`
+  width: 100%;
   max-width: 1200px;
   margin: 0 auto;
-  padding: 2rem;
 `;
 
 type SectionTitleProps = {
@@ -779,11 +788,12 @@ const InteractiveDemoPage: React.FC = () => {
       <Header />
       
       <MainContent>
-        <SectionTitle level={skillLevel}>Interactive Vibe Coding Demo</SectionTitle>
-        <SectionDescription>
-          Experience the power of AI-assisted development through these interactive demonstrations.
-          Each example showcases a different approach to solving coding challenges using AI tools.
-        </SectionDescription>
+        <ContentContainer>
+          <SectionTitle level={skillLevel}>Interactive Vibe Coding Demo</SectionTitle>
+          <SectionDescription>
+            Experience the power of AI-assisted development through these interactive demonstrations.
+            Each example showcases a different approach to solving coding challenges using AI tools.
+          </SectionDescription>
         
         <VideoTutorial
           videoId="dQw4w9WgXcQ" // Placeholder - replace with actual video ID
@@ -839,6 +849,7 @@ const InteractiveDemoPage: React.FC = () => {
           tool="windsurf"
           steps={windsurfWorkflowSteps}
         />
+        </ContentContainer>
       </MainContent>
       
       <Footer />
