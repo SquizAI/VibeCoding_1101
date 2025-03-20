@@ -3,6 +3,8 @@ import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-d
 import { ThemeProvider } from './styles/ThemeProvider';
 import HomePage from './components/pages/HomePage';
 import InteractiveDemoPage from './components/pages/InteractiveDemoPage';
+import TeacherDashboard from './components/admin/TeacherDashboard';
+import StudentDashboard from './components/student/StudentDashboard';
 import GlobalStyles from './styles/GlobalStyles';
 
 const App: React.FC = () => {
@@ -21,6 +23,13 @@ const App: React.FC = () => {
             <Route path="/advanced" element={<div className="container text-center">Advanced Content - Coming Soon</div>} />
             <Route path="/ninja" element={<div className="container text-center">Ninja Content - Coming Soon</div>} />
             <Route path="/resources" element={<div className="container text-center">Resources Page - Coming Soon</div>} />
+            
+            {/* Teacher dashboard route */}
+            <Route path="/teacher-dashboard" element={<TeacherDashboard />} />
+            <Route path="/teacher-dashboard/:chapterId" element={<TeacherDashboard />} />
+            
+            {/* Student dashboard route */}
+            <Route path="/student-dashboard" element={<StudentDashboard />} />
             
             {/* Fallback route for any undefined paths */}
             <Route path="*" element={<Navigate to="/" replace />} />
