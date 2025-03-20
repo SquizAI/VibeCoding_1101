@@ -1,0 +1,18 @@
+[build]
+  base = "interactive_chapter/vibe-coding-interactive"
+  publish = "dist"
+  command = "CI=false npm run build"
+
+[build.environment]
+  # Base environment variables (non-sensitive)
+  NODE_ENV = "production"
+  PORT = "3000"
+  VIBE_CODING_FEATURE_INTERACTIVE_DEMOS = "true"
+  VIBE_CODING_FEATURE_CASE_STUDIES = "true"
+  VIBE_CODING_FEATURE_METRICS = "true"
+  
+# Redirects for SPA
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
