@@ -1,6 +1,6 @@
 <div align="center">
 
-# 🔰 Chapter 1: The Vibe Coding Revolution (Beginner Level) 🔰
+# 🔰 Chapter 01: The Vibe Coding Revolution - Understanding AI-Driven Development For Beginners 🔰
 
 </div>
 

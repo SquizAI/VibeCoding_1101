@@ -1,12 +1,12 @@
 <div align="center">
 
-# Chapter 2: Getting Started with Vibe Coding - Beginner Level
+# 🚀 Chapter 02: Getting Started with Vibe Coding - Beginner Level 🚀
 
 </div>
 
 <div align="center">
 
-![Vibe Coding Banner](../resources/chapter2_banner.png)
+## **Getting Started With Vibe Coding: Friendly Guide For Beginners**
 
 </div>
 
