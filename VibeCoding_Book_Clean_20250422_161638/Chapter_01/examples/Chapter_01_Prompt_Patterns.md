@@ -1,6 +1,12 @@
 <div align="center">
 
-# ⚡ Prompt Pattern Examples ⚡
+# ⚡ Chapter 01: Prompt Pattern Examples ⚡
+
+</div>
+
+<div align="center">
+
+![Vibe Coding Banner](../../resources/chapter1_banner.png)
 
 </div>
 
@@ -51,6 +57,18 @@ Input: "(123)456-7890" → Output: "(123) 456-7890"
 
 <div align="center">
 
-**[⬅️ Back to Chapter 1](./README.md)**
+**[📚 Chapter 01 Main](../Chapter_01_Main.md) | [📚 Examples](../examples/) | [📚 Exercises](../exercises/)**
+
+</div>
+
+<div align="center">
+
+**[🔰 Beginner](../Chapter_01_Beginner.md) | [⚙️ Advanced](../Chapter_01_Advanced.md) | [⚔️ Ninja](../Chapter_01_Ninja.md)**
+
+</div>
+
+<div align="center">
+
+*© 2025 VibeCoding - Where Human Creativity Meets AI Capabilities*
 
 </div>

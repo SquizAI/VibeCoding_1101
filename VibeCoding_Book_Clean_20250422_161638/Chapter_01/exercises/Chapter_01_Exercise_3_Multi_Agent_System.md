@@ -1,4 +1,37 @@
-# Exercise 3: Building a Multi-Agent AI Development System (Ninja Level)
+<div align="center">
+
+# ⚔️ Chapter 01: Exercise 3 - Building a Multi-Agent AI Development System ⚔️
+## Ninja Level
+
+</div>
+
+<div align="center">
+
+![Vibe Coding Banner](../../resources/chapter1_banner.png)
+
+</div>
+
+<div align="center">
+
+> *"The future of development is orchestrating an ensemble of specialized AI agents"*
+
+</div>
+
+---
+
+<div align="center">
+
+**[📚 Chapter 01 Main](../Chapter_01_Main.md) | [📚 Examples](../examples/) | [📚 Exercises](../exercises/)**
+
+</div>
+
+<div align="center">
+
+**[🔰 Beginner](../Chapter_01_Beginner.md) | [⚙️ Advanced](../Chapter_01_Advanced.md) | [⚔️ Ninja](../Chapter_01_Ninja.md)**
+
+</div>
+
+---
 
 ## Overview
 
@@ -135,3 +168,23 @@ The system should orchestrate these agents, provide a way to resolve conflicts b
 - Extend the system to support multiple programming languages and paradigms
 - Design a mechanism for the system to autonomously discover and integrate new tools
 - Implement counterfactual reasoning to evaluate alternative design decisions
+
+---
+
+<div align="center">
+
+**[📚 Chapter 01 Main](../Chapter_01_Main.md) | [📚 Examples](../examples/) | [📚 Exercises](../exercises/)**
+
+</div>
+
+<div align="center">
+
+**[🔰 Beginner](../Chapter_01_Beginner.md) | [⚙️ Advanced](../Chapter_01_Advanced.md) | [⚔️ Ninja](../Chapter_01_Ninja.md)**
+
+</div>
+
+<div align="center">
+
+*© 2025 VibeCoding - Where Human Creativity Meets AI Capabilities*
+
+</div>

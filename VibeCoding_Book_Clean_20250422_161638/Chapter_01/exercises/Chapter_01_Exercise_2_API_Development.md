@@ -1,4 +1,37 @@
-# Exercise 2: AI-Assisted API Development (Advanced Level)
+<div align="center">
+
+# ⚙️ Chapter 01: Exercise 2 - AI-Assisted API Development ⚙️
+## Advanced Level
+
+</div>
+
+<div align="center">
+
+![Vibe Coding Banner](../../resources/chapter1_banner.png)
+
+</div>
+
+<div align="center">
+
+> *"Collaborative creation with AI accelerates solution development"*
+
+</div>
+
+---
+
+<div align="center">
+
+**[📚 Chapter 01 Main](../Chapter_01_Main.md) | [📚 Examples](../examples/) | [📚 Exercises](../exercises/)**
+
+</div>
+
+<div align="center">
+
+**[🔰 Beginner](../Chapter_01_Beginner.md) | [⚙️ Advanced](../Chapter_01_Advanced.md) | [⚔️ Ninja](../Chapter_01_Ninja.md)**
+
+</div>
+
+---
 
 ## Overview
 
@@ -83,3 +116,23 @@ The goal is to minimize manual coding while maintaining high-quality architectur
 - Containerize the application with Docker using AI assistance
 - Create an admin dashboard UI using AI-assisted frontend development
 - Implement rate limiting and advanced security features
+
+---
+
+<div align="center">
+
+**[📚 Chapter 01 Main](../Chapter_01_Main.md) | [📚 Examples](../examples/) | [📚 Exercises](../exercises/)**
+
+</div>
+
+<div align="center">
+
+**[🔰 Beginner](../Chapter_01_Beginner.md) | [⚙️ Advanced](../Chapter_01_Advanced.md) | [⚔️ Ninja](../Chapter_01_Ninja.md)**
+
+</div>
+
+<div align="center">
+
+*© 2025 VibeCoding - Where Human Creativity Meets AI Capabilities*
+
+</div>

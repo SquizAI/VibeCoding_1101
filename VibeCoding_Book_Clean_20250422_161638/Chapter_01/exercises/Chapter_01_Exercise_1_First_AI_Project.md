@@ -1,4 +1,37 @@
-# Exercise 1: Your First AI-Assisted Coding Project (Beginner Level)
+<div align="center">
+
+# 🔰 Chapter 01: Exercise 1 - Your First AI-Assisted Coding Project 🔰
+## Beginner Level
+
+</div>
+
+<div align="center">
+
+![Vibe Coding Banner](../../resources/chapter1_banner.png)
+
+</div>
+
+<div align="center">
+
+> *"Learning to communicate with AI is the new programming skill"*
+
+</div>
+
+---
+
+<div align="center">
+
+**[📚 Chapter 01 Main](../Chapter_01_Main.md) | [📚 Examples](../examples/) | [📚 Exercises](../exercises/)**
+
+</div>
+
+<div align="center">
+
+**[🔰 Beginner](../Chapter_01_Beginner.md) | [⚙️ Advanced](../Chapter_01_Advanced.md) | [⚔️ Ninja](../Chapter_01_Ninja.md)**
+
+</div>
+
+---
 
 ## Overview
 
@@ -77,3 +110,23 @@ Create a simple web-based to-do list application using AI assistance. The applic
 - Implement a dark/light mode toggle
 - Add due dates to tasks with sorting options
 - Ask the AI to help you make the app responsive for mobile devices
+
+---
+
+<div align="center">
+
+**[📚 Chapter 01 Main](../Chapter_01_Main.md) | [📚 Examples](../examples/) | [📚 Exercises](../exercises/)**
+
+</div>
+
+<div align="center">
+
+**[🔰 Beginner](../Chapter_01_Beginner.md) | [⚙️ Advanced](../Chapter_01_Advanced.md) | [⚔️ Ninja](../Chapter_01_Ninja.md)**
+
+</div>
+
+<div align="center">
+
+*© 2025 VibeCoding - Where Human Creativity Meets AI Capabilities*
+
+</div>

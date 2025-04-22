@@ -1,6 +1,6 @@
 <div align="center">
 
-# Chapter 1: The Vibe Coding Revolution
+# ⚡ Chapter 1: The Vibe Coding Revolution ⚡
 
 </div>
 
@@ -13,6 +13,20 @@
 <div align="center">
 
 > *"The future belongs to those who blend human creativity with AI capabilities"*
+
+</div>
+
+---
+
+<div align="center">
+
+**[📚 Table of Contents](../README.md) | [➡️ Next Chapter](../Chapter_02/Chapter_02_Main.md)**
+
+</div>
+
+<div align="center">
+
+**🔰 [Beginner](./Chapter_01_Beginner.md) | ⚙️ [Advanced](./Chapter_01_Advanced.md) | ⚔️ [Ninja](./Chapter_01_Ninja.md)**
 
 </div>
 
